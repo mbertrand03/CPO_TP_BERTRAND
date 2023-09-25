@@ -38,28 +38,33 @@ public class Calculator {
         System.out.println("choisissez une première valeur");
         operande1 = sc.nextInt();
 
-        System.out.println("qchoisissez une première valeur");
+        System.out.println("choisissez une première valeur");
         operande2 = sc.nextInt();
         do{
-           Systeme.out.println("error") ;
+           System.out.println("error");
         }while(operateur>5);
 
         if (operateur == 1) {
             result = operande1 + operande2;
+            System.out.println("the result is"+result);
         } 
         if (operateur == 2) {
             result = operande1 - operande2;
+            System.out.println("the result is"+result);
             }
     
         if (operateur==3) {
-            result=operande1*operande2;       
+            result=operande1*operande2; 
+            System.out.println("the result is"+result);
             }
         
         if ((operateur==4)&&(operande2!=0)) {
             result=operande1/operande2;
+            System.out.println("the result is"+result);
             }
         if (operateur==5) {
                 result=operande1%operande2;
+                System.out.println("the result is"+result);
             }
     }
 }
