@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package exo1;
+
+import java.util.Scanner;
+
 /*bertrand
 tdB
 afficher un message
@@ -21,6 +24,12 @@ public class Exo1 {
      */
     public static void main(String[] args) {
         System.out.println("Bonjour");
+        System.out.println("au revoir");
+    String prenom;
+    Scanner sc;
+    sc = new Scanner(System.in);
+    System.out.println("Bonjour, quel est ton prenom ?");
+    prenom = sc.nextLine();    
     }
     
 }
