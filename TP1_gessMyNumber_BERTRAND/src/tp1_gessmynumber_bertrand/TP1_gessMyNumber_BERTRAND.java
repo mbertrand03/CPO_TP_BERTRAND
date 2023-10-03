@@ -23,35 +23,100 @@ public class TP1_gessMyNumber_BERTRAND {
         // TODO code application logic here
         
         Random generateurAleat = new Random(); //permet de générer des nombres aléatoirement
-        int n = generateurAleat.nextInt(100);
+        int n = generateurAleat.nextInt(101);
+        
         int nb_choix;
+        int temp;
+        
+        temp=0;
         //for (int i=0;i<5;i++){
         //    int nb_alea=generateurAleat.nextInt(101);
         //    System.out.println("nombre aléatoire"+(i+1)+":"+nb_alea);
         //}
         //int nb_choix=generateurAleat.nextInt(101);
+        
         Scanner sc = new Scanner(System.in);
-        System.out.println("Bonjour, choisissez un nombre entre 0 et 100:");
-        n=sc.nextInt();
-        do{
-            nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
-          if (nb_choix<n){
-                System.out.println("trop petit, essayez encore!");
-            }else{
-                if (nb_choix>n){
-                    System.out.println("trop grand, essayez encore!");
-            }else{
-                System.out.println("gagné, le nombre à deviner était:"+n);
-                }
+        System.out.println("1: mode facil");
+        System.out.println("2: mode normal");
+        System.out.println("3: mode difficil");
+        System.out.println("veuillez choisir votre niveau de difficulté");
+        int choixNiveau=sc.nextInt();
+        
+        
+        //System.out.println("Bonjour, choisissez un nombre entre 0 et 100:");
+        
+        
+        //n=sc.nextInt();
+        //mode facile
+        switch (choixNiveau) {
+            case 1:
+                do{
+                    n=11;
+                    //int n = generateurAleat.nextInt(11);
+                    nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
+                    
+                    if (nb_choix<n){
+                        System.out.println("trop petit, essayez encore!");
+                        System.out.println("choisissez un nombre entre 0 et 100:");
+                        temp=temp+1;
+                    }
+                    else if (nb_choix>n){
+                        System.out.println("trop grand, essayez encore!");
+                        System.out.println("choisissez un nombre entre 0 et 100:");
+                        temp=temp+1;
+                    }
+                    else{
+                        System.out.println("gagné, le nombre à deviner était:"+n);
+                    }
+                }while(nb_choix!=n);
+                break;
+            case 2:
+                //int n = generateurAleat.nextInt(101);
+                do{
+                    n=101;
+                    nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
+                    
+                    if (nb_choix<n){
+                        System.out.println("trop petit, essayez encore!");
+                        System.out.println("choisissez un nombre entre 0 et 100:");
+                        temp=temp+1;
+                    }
+                    else if (nb_choix>n){
+                        System.out.println("trop grand, essayez encore!");
+                        System.out.println("choisissez un nombre entre 0 et 100:");
+                        temp=temp+1;
+                    }
+                    else{
+                        System.out.println("gagné, le nombre à deviner était:"+n);
+                    }
+                }while(nb_choix!=n);
+                
+                //mode difficile
+                break;
+            default:
+                
+                do{
+                    n=1001;
+                   //int n = generateurAleat.nextInt(1001);
+                    nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
+                    
+                    if (nb_choix<n){
+                        System.out.println("trop petit, essayez encore!");
+                        System.out.println("choisissez un nombre entre 0 et 100:");
+                        temp=temp+1;
+                    }
+                    else if (nb_choix>n){
+                        System.out.println("trop grand, essayez encore!");
+                        System.out.println("choisissez un nombre entre 0 et 100:");
+                        temp=temp+1;
+                    }
+                    else{
+                        System.out.println("gagné, le nombre à deviner était:"+n);
+                    }
+                }while(nb_choix!=n);
+                break;
+        }
+        System.out.println("le nombre d'essaie est:"+temp);
             }
         }
-        
-        while(nb_choix!=n);
-                }
-             
-          
-        }
-        
-    }
     
-}
