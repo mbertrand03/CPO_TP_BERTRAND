@@ -53,19 +53,23 @@ public class TP1_gessMyNumber_BERTRAND {
                 do{
                     n=11;
                     //int n = generateurAleat.nextInt(11);
-                    nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
                     
+                    nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
                     if (nb_choix<n){
-                        System.out.println("trop petit, essayez encore!");
                         System.out.println("choisissez un nombre entre 0 et 100:");
+                        
+                        System.out.println("trop petit, essayez encore!");
+                        
                         temp=temp+1;
                     }
                     else if (nb_choix>n){
-                        System.out.println("trop grand, essayez encore!");
                         System.out.println("choisissez un nombre entre 0 et 100:");
+                        System.out.println("trop grand, essayez encore!");
+                        
                         temp=temp+1;
                     }
                     else{
+                        System.out.println("choisissez un nombre entre 0 et 100:");
                         System.out.println("gagné, le nombre à deviner était:"+n);
                     }
                 }while(nb_choix!=n);
@@ -77,16 +81,19 @@ public class TP1_gessMyNumber_BERTRAND {
                     nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
                     
                     if (nb_choix<n){
-                        System.out.println("trop petit, essayez encore!");
                         System.out.println("choisissez un nombre entre 0 et 100:");
+                        System.out.println("trop petit, essayez encore!");
+                        
                         temp=temp+1;
                     }
                     else if (nb_choix>n){
-                        System.out.println("trop grand, essayez encore!");
                         System.out.println("choisissez un nombre entre 0 et 100:");
+                        System.out.println("trop grand, essayez encore!");
+                        
                         temp=temp+1;
                     }
                     else{
+                        System.out.println("choisissez un nombre entre 0 et 100:");
                         System.out.println("gagné, le nombre à deviner était:"+n);
                     }
                 }while(nb_choix!=n);
@@ -101,16 +108,19 @@ public class TP1_gessMyNumber_BERTRAND {
                     nb_choix=sc.nextInt(); // On demande a sc de donner le prochain entier
                     
                     if (nb_choix<n){
-                        System.out.println("trop petit, essayez encore!");
                         System.out.println("choisissez un nombre entre 0 et 100:");
+                        System.out.println("trop petit, essayez encore!");
+                        
                         temp=temp+1;
                     }
                     else if (nb_choix>n){
-                        System.out.println("trop grand, essayez encore!");
                         System.out.println("choisissez un nombre entre 0 et 100:");
+                        System.out.println("trop grand, essayez encore!");
+                        
                         temp=temp+1;
                     }
                     else{
+                        System.out.println("choisissez un nombre entre 0 et 100:");
                         System.out.println("gagné, le nombre à deviner était:"+n);
                     }
                 }while(nb_choix!=n);
