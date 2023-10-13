@@ -48,11 +48,7 @@ public class TP2_relation_1_BERTRAND {
         uneClio.Proprietaire = reno ;
         reno.liste_voitures[1] = uneClio ;
         System.out.println("la deuxieme voiture de reno est " + reno.liste_voitures[1] ) ;
-
-        
-        
-
-        
+  
     }
     
 }
