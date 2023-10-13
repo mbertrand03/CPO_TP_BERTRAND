@@ -7,7 +7,10 @@ package tp2_constructeurobjet_bertrand;
 import java.util.Scanner;
 
 /**
- *
+ *bertrand
+ * TDB
+ * 13/10/2023
+ * conversion de données en utilisant les classes, méthodes, objets
  * @author marie
  */
 public class TP2_constructeurObjet_BERTRAND {
