@@ -12,9 +12,18 @@ public class Voiture {
     String Modele;
     String Marque;
     int PuissanceCV;
+    Personne Proprietaire;
     
+    @Override
     public String toString () {
-    return "le modele de la voiture est:"+Modele+"sa marque est:"+Marque+"la puissanceCV est: "+ PuissanceCV;
+    return "le modele de la voiture est:"+Modele+" ,sa marque est:"+Marque+" et la puissanceCV est de "+ PuissanceCV;
+    }
+
+    public Voiture(String Modele, String Marque, int PuissanceCV) {
+        this.Modele = Modele;
+        this.Marque = Marque;
+        this.PuissanceCV = PuissanceCV;
+        this.Proprietaire=null;
     }
     
     
