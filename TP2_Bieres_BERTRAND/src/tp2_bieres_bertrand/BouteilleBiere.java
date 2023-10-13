@@ -8,27 +8,27 @@ package tp2_bieres_bertrand;
  *
  * @author marie
  */
-public class BouteilleBiere {
+public class BouteilleBiere { //création de la classe
         
-        String nom;
-        float degreAlcool;
+        String nom;  //création des attributs
+        double degreAlcool;
         String brasserie;
         boolean ouverte;
         
-        public void lireEtiquette() {
+        public void lireEtiquette() {   //création d'une méthode pour l'étiquette sur la biere
             System.out.println("Bouteille de " + nom +" (" + degreAlcool +
             " degres) \nBrasserie : " + brasserie ) ;
         }
         
-        public BouteilleBiere(String unNom, float unDegre, String uneBrasserie) {
+        public BouteilleBiere(String unNom, double unDegre, String uneBrasserie) {  //création du constructeur
             nom = unNom;
             degreAlcool = unDegre;
             brasserie = uneBrasserie;
             ouverte = false;
         }
         
-        public boolean decapsuler(){
-            if (ouverte=false){
+        public boolean decapsuler(){  //création d'une nouvelle méthode permettant de savoir si la bouteille est décapsuler et agir en fonction
+            if (ouverte==false){
                 return true;
             }
             else{
