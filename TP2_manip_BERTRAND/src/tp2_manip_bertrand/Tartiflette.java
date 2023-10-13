@@ -12,15 +12,6 @@ public class Tartiflette {
     int nbCalories;
 
     public Tartiflette(int nbCalories) {
-        this.nbCalories = nbCalories;
-        
-    }
-    
-    @Override
-    public String toString () {
-        return "nb de calories dans la tartiflette"+ nbCalories;
-    }
-    
-    
-    
+        this.nbCalories = nbCalories;  
+    }    
 }
