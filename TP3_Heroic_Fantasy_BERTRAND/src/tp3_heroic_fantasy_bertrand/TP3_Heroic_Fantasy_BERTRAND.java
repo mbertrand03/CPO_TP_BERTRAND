@@ -4,6 +4,9 @@
  */
 package tp3_heroic_fantasy_bertrand;
 
+import Personnages.Personnage;
+import Personnages.Magicien;
+import Personnages.Guerrier;
 import Armes.Epee;
 import Armes.Baton;
 import Armes.Arme;
@@ -40,6 +43,27 @@ public class TP3_Heroic_Fantasy_BERTRAND {
         for (Arme arme : tabArmes) {
             System.out.println(arme);
         }
+        
+        Magicien magi1=new Magicien("Gandalf",65,"confirmé");
+        Magicien magi2=new Magicien("Garcimore",44,"novice");
+        Guerrier guer1=new Guerrier("Conan",78,"a pied");
+        Guerrier guer2=new Guerrier("Lannister",45,"a cheval");
+        
+        ArrayList<Personnage>tabPers=new ArrayList<Personnage>(4);
+        tabPers.add(magi1);
+        tabPers.add(magi2);
+        tabPers.add(guer1);
+        tabPers.add(guer2);
+        
+        //for (int i=0; i<=tabArmes.size(); i++){
+          //  System.out.println("Epee :"+tabArmes.get(0)+" niveau d'attaque :"+tabArmes.get(1)+ tabArmes.get(2));
+        //}
+        for (Personnage perso : tabPers) {
+            System.out.println(perso);
+        }
+        
+       
+        
     }
     
 }

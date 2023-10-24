@@ -2,25 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tp3_heroic_fantasy_bertrand;
+package Personnages;
 
 /**
  *
  * @author marie
  */
-public class Magicien extends Personnage {
-    Boolean Param=true;
-    String etat;
+public class Guerrier extends Personnage {
+    String type;
 
-    public Magicien(String nomPers, int niveau_vie, Boolean Param, String etat) {
+    public Guerrier(String nomPers, int niveau_vie, String type) {
         super(nomPers, niveau_vie);
-        if (Param=true){
-            etat="confirmé";
+        if (type=="a cheval"){
+            this.type=type;
         }
         else{
-            etat=null;
+            this.type="a pied";
         }
     }
+    
     
     
 }
