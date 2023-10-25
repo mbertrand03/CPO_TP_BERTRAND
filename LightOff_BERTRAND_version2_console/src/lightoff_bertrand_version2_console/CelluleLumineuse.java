@@ -27,6 +27,9 @@ public class CelluleLumineuse {
             etat=true;
             System.out.println(etat);
         }
+        else{
+            etat=false;
+        }
     }
     
     /**
