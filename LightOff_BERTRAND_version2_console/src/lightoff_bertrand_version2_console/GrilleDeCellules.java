@@ -39,11 +39,12 @@ public class GrilleDeCellules {
         }
     }
     
-    public void activerLigneColonneOuDiagonalAleatoire(){
+    /**
+     *genere de maniere aleatoire une ligne, une colonne ou diagonale inverse ou non
+     */
+    public void activerLigneColonneOuDiagonaleAleatoire(){
         Random generateurAleat = new Random(); //permet de générer des nombres aléatoirement
         int choix=generateurAleat.nextInt(4);
-        int nbL = matriceCellules.length;
-        int nbC = matriceCellules[0].length;
         
         if (choix==0){
             for (int i=0;i<matriceCellules[nbLignes].length;i++){
@@ -77,20 +78,93 @@ public class GrilleDeCellules {
         }
     }
     
-    
+    /**
+     *eteint toutes les cellules de la matrice puis melange la matrice aléatoirement
+     * @param nbTours définit le nombre de tours a partir du nombre de fois on peut mélanger la matrice
+     */
     public void MelangerMatriceAleatoirement(int nbTours){
         this.eteindreToutesLesCellules();
-        for (int tour = 0; tour < nbTours; tour++) {
-            //int i = rand.nextInt(numRows); // Générer un indice de ligne aléatoire
-            //int j = rand.nextInt(numCols); // Générer un indice de colonne aléatoire
-
-            matriceCellules[i][j].allumerOuEteindre(); /    
-//this.activerLigneColonneOuDiagonaleAleatoire();
+        for (int i = 0; i< nbTours; nbTours++) {
+            this.activerLigneColonneOuDiagonaleAleatoire();
             
         }
         
     }
-   
+    
+    /**
+     *active les cellules d'une ligne spécifique de la matrice
+     * @param idLigne identifie la ligne que l'on souhaite activer
+     */
+    public void activerLigneDeCellules(int idLigne){
+        if (idLigne >= 0 && idLigne < matriceCellules.length) {
+            for (int j = 0; j < matriceCellules[idLigne].length; j++) {
+                matriceCellules[idLigne][j].activerCellule();
+            }
+        }
+    }
+    
+    /**
+     *active les cellules d'une colonne spécifique de la matrice
+     * @param idColonne identifie la colonne que l'on souhaite activer
+     */
+    public void activerColonneDeCellules(int idColonne){
+        if (idColonne >= 0 && idColonne < matriceCellules.length) {
+            for (int j = 0; j < matriceCellules[idColonne].length; j++) {
+                matriceCellules[j][idColonne].activerCellule();
+            }
+        
+        }
+    }
+    
+    /**
+     *permet d'activer la diagonale descendante de la matrice
+     */
+    public void activerDiagonaleDescendante(){
+        for (int i=0; i<matriceCellules.length;i++){
+            for (int j=0; j<matriceCellules.length;j++){
+                if (i==j){
+                    matriceCellules[i][j].activerCellule();
+                }
+            }
+        }
+    }
+    
+    /**
+     *permet d'activer la diagonale descendante
+     */
+    public void activerDiagonaleMontante(){
+        int colonnes = matriceCellules[0].length;
+        for (int i=0; i<matriceCellules.length-1;i-- ){
+            for (int j=0;j<matriceCellules.length-1;j--){
+                if(i+j==colonnes-1){
+                    matriceCellules[i][j].activerCellule();
+                }
+            }
+        }
+    }
+    
+    public boolean cellulesToutesEteintes(){
+        for (int i=0; i<matriceCellules.length;i++ ){
+            for (int j=0;j<matriceCellules.length;j++){
+                if (matriceCellules[i][j].estEteint()==true){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    @Override
+    public String toString(){
+        String resultat = " |";
+        
+        for (int i = 0; i <= 6; i++) {
+            resultat += " " + i + " |";
+        }
+        
+        return resultat;
+    }
+
         
 }
     
