@@ -38,59 +38,6 @@ public class GrilleDeCellules {
             }
         }
     }
-    
-    /**
-     *genere de maniere aleatoire une ligne, une colonne ou diagonale inverse ou non
-     */
-    public void activerLigneColonneOuDiagonaleAleatoire(){
-        Random generateurAleat = new Random(); //permet de générer des nombres aléatoirement
-        int choix=generateurAleat.nextInt(4);
-        
-        if (choix==0){
-            for (int i=0;i<matriceCellules[nbLignes].length;i++){
-                int ligne=generateurAleat.nextInt(nbLignes);
-                matriceCellules[ligne][i].activerCellule();
-            }
-        }
-        else if (choix==1){
-            for (int i=0;i<matriceCellules[nbColonnes].length;i++){
-            int colonne=generateurAleat.nextInt(nbColonnes);
-            matriceCellules[i][colonne].activerCellule();
-            }
-        }
-        else if (choix==2){
-            for (int i=0; i<nbLignes;i++){
-                for (int j=0; j<nbColonnes ; j++){
-                    if (i==j){
-                         matriceCellules[i][j].activerCellule();
-                    }
-                }
-                   
-        }
-        }else{
-            for (int i=0; i<nbLignes;i++){
-                for (int j=0; j<nbColonnes ; j++){
-                    if (i+j==nbColonnes-1){
-                         matriceCellules[i][j].activerCellule();
-                    }
-                }
-            }
-        }
-    }
-    
-    /**
-     *eteint toutes les cellules de la matrice puis melange la matrice aléatoirement
-     * @param nbTours définit le nombre de tours a partir du nombre de fois on peut mélanger la matrice
-     */
-    public void MelangerMatriceAleatoirement(int nbTours){
-        this.eteindreToutesLesCellules();
-        for (int i = 0; i< nbTours; nbTours++) {
-            this.activerLigneColonneOuDiagonaleAleatoire();
-            
-        }
-        
-    }
-    
     /**
      *active les cellules d'une ligne spécifique de la matrice
      * @param idLigne identifie la ligne que l'on souhaite activer
@@ -101,7 +48,7 @@ public class GrilleDeCellules {
                 matriceCellules[idLigne][j].activerCellule();
             }
         }
-    }
+    }   
     
     /**
      *active les cellules d'une colonne spécifique de la matrice
@@ -112,7 +59,6 @@ public class GrilleDeCellules {
             for (int j = 0; j < matriceCellules[idColonne].length; j++) {
                 matriceCellules[j][idColonne].activerCellule();
             }
-        
         }
     }
     
@@ -120,8 +66,8 @@ public class GrilleDeCellules {
      *permet d'activer la diagonale descendante de la matrice
      */
     public void activerDiagonaleDescendante(){
-        for (int i=0; i<matriceCellules.length;i++){
-            for (int j=0; j<matriceCellules.length;j++){
+        for (int i=0; i<nbLignes;i++){
+            for (int j=0; j<nbLignes;j++){
                 if (i==j){
                     matriceCellules[i][j].activerCellule();
                 }
@@ -133,15 +79,58 @@ public class GrilleDeCellules {
      *permet d'activer la diagonale descendante
      */
     public void activerDiagonaleMontante(){
-        int colonnes = matriceCellules[0].length;
-        for (int i=0; i<matriceCellules.length-1;i-- ){
-            for (int j=0;j<matriceCellules.length-1;j--){
-                if(i+j==colonnes-1){
+        for (int i=0; i<nbLignes;i++){
+            for (int j=0;j<nbLignes;j++){
+                if(i+j==nbLignes-1){
                     matriceCellules[i][j].activerCellule();
                 }
             }
         }
     }
+    
+    /**
+     *genere de maniere aleatoire une ligne, une colonne ou diagonale inverse ou non
+     */
+    public void activerLigneColonneOuDiagonaleAleatoire(){
+        Random alea = new Random(); //permet de générer des nombres aléatoirement
+        int choix=alea.nextInt(3);
+        switch (choix){
+                case 0 ->{
+                    int ligne=alea.nextInt(nbLignes);
+                    this.activerLigneDeCellules(ligne);
+                }
+                case 1-> {
+                    int colonne=alea.nextInt(nbColonnes);
+                    this.activerColonneDeCellules(colonne);
+                }
+                case 2->{
+                    int diag=alea.nextInt(2);
+                    if (diag==0){
+                        this.activerDiagonaleDescendante();
+                        break;
+                    } 
+                    else if (diag==1){
+                        this.activerDiagonaleMontante();
+                    }
+            
+                }
+                default ->{
+                }
+            }         
+        }
+    
+    
+    /**
+     *eteint toutes les cellules de la matrice puis melange la matrice aléatoirement
+     * @param nbTours définit le nombre de tours a partir du nombre de fois on peut mélanger la matrice
+     */
+    public void MelangerMatriceAleatoirement(int nbTours){
+        this.eteindreToutesLesCellules();
+        for (int i = 0; i< nbTours; i++) {
+            this.activerLigneColonneOuDiagonaleAleatoire();  
+        }
+    }
+    
     
     public boolean cellulesToutesEteintes(){
         for (int i=0; i<matriceCellules.length;i++ ){
@@ -155,33 +144,26 @@ public class GrilleDeCellules {
     }
     
     @Override
-    public String toString(){
-        String resultat = "  |";
-        
-        for (int i = 0; i <= 6; i++) {
-            resultat += " " + i + " |";
-            
-        }
-        for(int i=0;i<=6;i++){
-          resultat += "\n";
-            resultat += "------------------------------";  
-            for (int j=0; j<=6 ;j++){
-                String result=matriceCellules[i][j].toString();
-                resultat += "\n";
-                resultat+= " "+j+"| "+result+" | "+matriceCellules[i][j];
-                resultat += "\n";
-                resultat += "------------------------------";
-            }
-        
-        
-        return resultat;
-        
-        }
-        return null;
-    } 
-        
+    public String toString(){ 
+        String grille = "  |";
+        for (int i=0;i<nbColonnes;i++){
+            grille += " " + i + " |";}      
+            grille += "\n";
+            for (int i=0;i<(nbColonnes+1)*4;i++){
+                grille += "-";}
+                grille+="\n";
+            for (int i=0;i<nbLignes;i++){
+                grille += i+" |";
+                for (int j=0;j<nbColonnes;j++){
+                    if(matriceCellules[i][j].getEtat()){
+                        grille += " X"+" |";}
+                    else{
+                        grille += " O"+" |";}}
+                grille += "\n";
+                    for (int j=0;j<(nbColonnes+1)*4;j++){
+                        grille += "-";}
+                        grille += "\n";}
+        return grille;
+    }
+   
 }
-    
-    
-    
-

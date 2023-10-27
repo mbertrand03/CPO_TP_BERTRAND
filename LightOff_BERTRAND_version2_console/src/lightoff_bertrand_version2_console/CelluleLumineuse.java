@@ -17,6 +17,7 @@ public class CelluleLumineuse {
      */
     public CelluleLumineuse(boolean etat) {
         this.etat = false;
+        
     }
     
     /**
@@ -26,8 +27,9 @@ public class CelluleLumineuse {
         if (etat==false){
             etat=true;
             System.out.println(etat);
+            
         }
-        else{
+        else if (etat==true){
             etat=false;
         }
     }
@@ -38,8 +40,10 @@ public class CelluleLumineuse {
     public void eteindreCellule(){
         if (etat==true){    
             etat=false;
+            
         }
         System.out.println(etat);
+        
     }
     
     /**
@@ -65,4 +69,18 @@ public class CelluleLumineuse {
         }
         return false;
     }
+    
+    @Override
+    public String toString(){
+        if(this.etat==true){
+                return "X";
+        }
+        else if (this.etat==false){
+            return "O";
+        }
+        return null;
+    }
+        
 }
+
+
