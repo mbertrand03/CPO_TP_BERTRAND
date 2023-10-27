@@ -160,9 +160,15 @@ public class GrilleDeCellules {
         
         for (int i = 0; i <= 6; i++) {
             resultat += " " + i + " |";
+            
         }
+        resultat += "\n";
+        resultat += "------------------------------";
+        
         
         return resultat;
+        
+        
     }
 
         
