@@ -19,14 +19,15 @@ public class LightOff_BERTRAND_version2_console {
         //tests des methodes de la class cellulelumineuse
         CelluleLumineuse test1=new CelluleLumineuse(true);
         CelluleLumineuse test2=new CelluleLumineuse(false);
-        test1.activerCellule();
-        test1.eteindreCellule();
-        test1.estEteint();
-        test2.activerCellule();
-        test2.eteindreCellule();
-        test2.estEteint();
+        //test1.activerCellule();
+        //test1.eteindreCellule();
+        //test1.estEteint();
+        //test2.activerCellule();
+        //test2.eteindreCellule();
+        //test2.estEteint();
     
      GrilleDeCellules grille1=new GrilleDeCellules(7,7);
+     Partie grille2=new Partie(5);
      //grille1.activerLigneDeCellules(2);
      //grille1.activerColonneDeCellules(2);
      //grille1.activerDiagonaleDescendante();
@@ -34,7 +35,9 @@ public class LightOff_BERTRAND_version2_console {
      //grille1.activerLigneColonneOuDiagonaleAleatoire();
      //grille1.MelangerMatriceAleatoirement(5);
      //grille1.cellulesToutesEteintes();
-     grille1.eteindreToutesLesCellules();
+     //grille1.eteindreToutesLesCellules();
+     //grille2.initialiserPartie();
+     grille2.lancerPartie();
      System.out.println(grille1);
     }
     

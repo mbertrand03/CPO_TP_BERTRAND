@@ -7,7 +7,7 @@ package lightoff_bertrand_version2_console;
 import java.util.Scanner;
 
 /**
- *
+ *permet au joueur d'effectuer une partie
  * @author marie
  */
 public class Partie {
@@ -18,28 +18,65 @@ public class Partie {
         this.nbCoups = 0;
     }
     
-    public void initaliserPartie(GrilleDeCellules grille){
+    /**
+     *permet d'initialiser la partie en mélangeant de la manière aleatoire la grille
+     */
+    public void initialiserPartie(){
+        
         grille.MelangerMatriceAleatoirement(nbCoups);
     }
     
+    /**
+     *permet au joueur de jouer: il choisit quel coup effectuer et son numero attribuer à l'action si besoin
+     * un chaque coup effectuer le nombre de coup effectué est incrementé de un
+     * le joueur gagne quand toutes les cellules sont eteintes
+     */
     public void lancerPartie(){
-      do{
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Entrez votre coup : ");
-        String coup = scanner.nextLine(); 
+    Scanner scanner = new Scanner(System.in); // Créez le scanner en dehors de la boucle
+    System.out.println(grille); // Afficher l'état de la grille
+    do {
         
-        if(coup=="0"){
-            grille.activerLigneDeCellules(coup);
+        System.out.print("Entrez votre coup (ligne, colonne, diagonale montante ou diagonale descendante) : ");
+        String coup = scanner.nextLine();
+        
+
+        if (coup=="ligne") {
+            System.out.println("choisissez le numero de la ligne");
+            int num=scanner.nextInt();
+            grille.activerLigneDeCellules(num);
+            System.out.println(grille);
             nbCoups+=1;
+        } 
+        else if (coup=="colonne") {
+            System.out.println("choisissez le numero de la colonne");
+            int num=scanner.nextInt();
+            grille.activerColonneDeCellules(num);
+            System.out.println(grille);
+            nbCoups+=1;
+        } 
+        else if (coup=="diagonale montante") {
+            grille.activerDiagonaleMontante();
+            System.out.println(grille);
+            nbCoups+=1;
+        } 
+        else if (coup=="diagonale descendante") {
+            grille.activerDiagonaleDescendante();
+            System.out.println(grille);
+            nbCoups+=1;
+        } 
+        else {
+            System.out.println("Coup invalide. Veuillez entrer 'ligne', 'colonne', 'diagonale montante', ou 'diagonale descendante'.");
         }
-        else if (coup=="1"){
-            this.activerColonneDeCellules();
-        }
-      }while(grille!=cellulesToutesEteintes()); 
-      System.out.println("Toutes les cellules sont éteintes !");
+    } while (!grille.cellulesToutesEteintes());
+
+    // Une fois que toutes les cellules sont éteintes, le jeu se termine
+    System.out.println(grille);
+    System.out.println("Toutes les cellules sont éteintes !");
     System.out.println("Nombre de coups nécessaires : " + nbCoups);
-    }
+
+    scanner.close(); // N'oubliez pas de fermer le scanner.
+}
+
     
     
 }

@@ -7,7 +7,7 @@ package lightoff_bertrand_version2_console;
 import java.util.Random;
 
 /**
- *
+ *permet de générer, d'activer, d'éteindre des lignes, colonnes, diagonales
  * @author marie
  */
 public class GrilleDeCellules {
@@ -131,7 +131,10 @@ public class GrilleDeCellules {
         }
     }
     
-    
+    /**
+     *permet d'éteindre toutes les cellules de la grille
+     * @return true si la grille éteinte
+     */
     public boolean cellulesToutesEteintes(){
         for (int i=0; i<matriceCellules.length;i++ ){
             for (int j=0;j<matriceCellules.length;j++){

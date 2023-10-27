@@ -5,7 +5,7 @@
 package lightoff_bertrand_version2_console;
 
 /**
- *
+ *permet de définir les transitions entre une cellule allumée et eteinte
  * @author marie
  */
 public class CelluleLumineuse {
@@ -64,7 +64,7 @@ public class CelluleLumineuse {
      * @return true si elle est allumée et inversement
      */
     public boolean getEtat(){
-        if (etat==false){
+        if (etat==true){
             return true;
         }
         return false;
