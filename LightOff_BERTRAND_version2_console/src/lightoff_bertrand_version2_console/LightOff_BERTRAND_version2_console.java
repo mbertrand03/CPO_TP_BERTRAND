@@ -33,7 +33,8 @@ public class LightOff_BERTRAND_version2_console {
      //grille1.activerDiagonaleMontante();
      //grille1.activerLigneColonneOuDiagonaleAleatoire();
      //grille1.MelangerMatriceAleatoirement(5);
-     grille1.cellulesToutesEteintes();
+     //grille1.cellulesToutesEteintes();
+     grille1.eteindreToutesLesCellules();
      System.out.println(grille1);
     }
     
