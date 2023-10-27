@@ -156,21 +156,29 @@ public class GrilleDeCellules {
     
     @Override
     public String toString(){
-        String resultat = " |";
+        String resultat = "  |";
         
         for (int i = 0; i <= 6; i++) {
             resultat += " " + i + " |";
             
         }
-        resultat += "\n";
-        resultat += "------------------------------";
+        for(int i=0;i<=6;i++){
+          resultat += "\n";
+            resultat += "------------------------------";  
+            for (int j=0; j<=6 ;j++){
+                String result=matriceCellules[i][j].toString();
+                resultat += "\n";
+                resultat+= " "+j+"| "+result+" | "+matriceCellules[i][j];
+                resultat += "\n";
+                resultat += "------------------------------";
+            }
         
         
         return resultat;
         
-        
-    }
-
+        }
+        return null;
+    } 
         
 }
     
