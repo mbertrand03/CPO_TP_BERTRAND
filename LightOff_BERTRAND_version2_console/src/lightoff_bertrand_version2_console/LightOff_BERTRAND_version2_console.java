@@ -25,7 +25,16 @@ public class LightOff_BERTRAND_version2_console {
         test2.activerCellule();
         test2.eteindreCellule();
         test2.estEteint();
-        
+    
+     GrilleDeCellules grille1=new GrilleDeCellules(7,7);
+     //grille1.activerLigneDeCellules(2);
+     //grille1.activerColonneDeCellules(2);
+     //grille1.activerDiagonaleDescendante();
+     //grille1.activerDiagonaleMontante();
+     //grille1.activerLigneColonneOuDiagonaleAleatoire();
+     //grille1.MelangerMatriceAleatoirement(5);
+     grille1.cellulesToutesEteintes();
+     System.out.println(grille1);
     }
     
 }
