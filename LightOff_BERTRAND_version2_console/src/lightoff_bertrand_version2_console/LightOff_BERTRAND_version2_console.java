@@ -38,7 +38,8 @@ public class LightOff_BERTRAND_version2_console {
      //grille1.eteindreToutesLesCellules();
      //grille2.initialiserPartie();
      grille2.lancerPartie();
-     System.out.println(grille1);
+     //System.out.println(grille1);
+     System.out.println(grille2);
     }
     
 }

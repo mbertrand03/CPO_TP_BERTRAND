@@ -26,7 +26,7 @@ public class CelluleLumineuse {
     public void activerCellule(){
         if (etat==false){
             etat=true;
-            System.out.println(etat);
+            //System.out.println(etat);
             
         }
         else if (etat==true){
@@ -42,7 +42,7 @@ public class CelluleLumineuse {
             etat=false;
             
         }
-        System.out.println(etat);
+        //System.out.println(etat);
         
     }
     
@@ -73,12 +73,12 @@ public class CelluleLumineuse {
     @Override
     public String toString(){
         if(this.etat==true){
-                return "X";
+                return "X"+"\u001B[43m \\u001B[0m";
         }
         else if (this.etat==false){
-            return "O";
+            return "O"+"\u001B[41m \\u001B[0m";
         }
-        return null;
+        return " ";
     }
         
 }

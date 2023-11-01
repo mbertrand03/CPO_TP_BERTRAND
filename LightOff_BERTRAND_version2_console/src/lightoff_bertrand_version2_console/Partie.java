@@ -15,6 +15,7 @@ public class Partie {
     int nbCoups;
 
     public Partie(int nbCoups) {
+        this.grille=grille;
         this.nbCoups = 0;
     }
     
@@ -31,11 +32,12 @@ public class Partie {
      * un chaque coup effectuer le nombre de coup effectué est incrementé de un
      * le joueur gagne quand toutes les cellules sont eteintes
      */
-    public void lancerPartie(){
+    public String lancerPartie(){
     Scanner scanner = new Scanner(System.in); // Créez le scanner en dehors de la boucle
-    System.out.println(grille); // Afficher l'état de la grille
+    
+    
     do {
-        
+        System.out.println(this.grille.toString()); // Afficher l'état de la grille
         System.out.print("Entrez votre coup (ligne, colonne, diagonale montante ou diagonale descendante) : ");
         String coup = scanner.nextLine();
         
@@ -67,7 +69,7 @@ public class Partie {
         else {
             System.out.println("Coup invalide. Veuillez entrer 'ligne', 'colonne', 'diagonale montante', ou 'diagonale descendante'.");
         }
-    } while (!grille.cellulesToutesEteintes());
+    } while (this.grille.cellulesToutesEteintes());
 
     // Une fois que toutes les cellules sont éteintes, le jeu se termine
     System.out.println(grille);
@@ -75,6 +77,7 @@ public class Partie {
     System.out.println("Nombre de coups nécessaires : " + nbCoups);
 
     scanner.close(); // N'oubliez pas de fermer le scanner.
+        return "bien joué";
 }
 
     
