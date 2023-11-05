@@ -83,8 +83,8 @@ public class CelluleLumineuse {
                     return "O";
                 }
             return " ";
-        }
-    }
+        } 
+}
     
         
 

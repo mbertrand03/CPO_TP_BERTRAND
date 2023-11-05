@@ -101,7 +101,7 @@ public class Partie {
         }
     else{
         return "perdu";
-    }
+    } 
     }    
     
     /**

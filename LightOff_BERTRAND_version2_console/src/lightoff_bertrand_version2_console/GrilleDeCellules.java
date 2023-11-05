@@ -35,7 +35,7 @@ public class GrilleDeCellules {
         for (int i=0; i<nbLignes;i++){
             for (int j=0; j<nbColonnes ; j++){
                 matriceCellules[i][j].eteindreCellule();
-            }
+            } 
         }
     }
     /**
