@@ -5,7 +5,9 @@
 package lightoff_bertrand_version2_console;
 
 /**
- *
+ *bertrand
+ * tdB
+ * 05/11/2023
  * @author marie
  */
 public class LightOff_BERTRAND_version2_console {
@@ -16,7 +18,7 @@ public class LightOff_BERTRAND_version2_console {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        //tests des methodes de la class cellulelumineuse
+        
         CelluleLumineuse test1=new CelluleLumineuse(true);
         CelluleLumineuse test2=new CelluleLumineuse(false);
         //test1.activerCellule();
@@ -41,8 +43,7 @@ public class LightOff_BERTRAND_version2_console {
      grille2.NiveauDeJeu();
      grille2.initialiserPartie(3);
      grille2.lancerPartie();
-     //System.out.println(grille1);
-     //System.out.println(grille2);
+     
     }
     
 }
