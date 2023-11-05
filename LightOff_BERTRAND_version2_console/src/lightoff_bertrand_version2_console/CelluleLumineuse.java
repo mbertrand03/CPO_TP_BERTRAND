@@ -75,17 +75,18 @@ public class CelluleLumineuse {
     
     @Override
     public String toString(){
-        if(this.etat==true){
-
-            return "X";
+        StringBuilder sb = new StringBuilder();
+                if(this.etat==true){
+                    return "X";
+                }
+                else if (this.etat==false){
+                    return "O";
+                }
+            return " ";
         }
-        else if (this.etat==false){
-            return "O";
-        }
-        return " ";
     }
     
         
-}
+
 
 

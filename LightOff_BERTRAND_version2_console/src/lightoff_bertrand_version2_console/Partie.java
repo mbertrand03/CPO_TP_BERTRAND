@@ -15,7 +15,6 @@ public class Partie {
     int nbCoups;
     int dim;
     int nbCoupmax=0;
-    //int dim=this.grille.nbColonnes;
     
     public Partie(int dimParDefaut) {
         
@@ -27,6 +26,7 @@ public class Partie {
     
     /**
      *permet d'initialiser la partie en mélangeant de la manière aleatoire la grille
+     * @mix permet de connaitre le nombre de fois que l'on souhaite mélanger la grille
      */
     public GrilleDeCellules initialiserPartie(int mix){
         this.grille.activerLigneColonneOuDiagonaleAleatoire();
@@ -38,21 +38,20 @@ public class Partie {
      *permet au joueur de jouer: il choisit quel coup effectuer et son numero attribuer à l'action si besoin
      * un chaque coup effectuer le nombre de coup effectué est incrementé de un
      * le joueur gagne quand toutes les cellules sont eteintes
+     * @num permet de savoir quelle ligne/colonne le joueur veut activer/désactiver
+     * @coup permet de connaitre quelle action veut effectuer le joueur
+     * @r permet desvoir combien il reste de coups possibles au joueur
      */
     public String lancerPartie(){
-    //dim=this.NiveauDeJeu();
+    
     Scanner scanner = new Scanner(System.in); 
     int coup=0;
     int num=0;
     do{
         do{
-        System.out.println(this.grille.toString()); // Afficher l'état de la grille
+        System.out.println(this.grille.toString()); 
         System.out.print("Entrez votre coup: 1 pour ligne, 2 pour colonne, 3 pour diagonale montante ou 4 pour diagonale descendante) : ");
-        
-        do{
         coup = scanner.nextInt();
-        }while (coup<1 || coup>4);
-            
                 if(coup==1){
                     
                         System.out.println("choisissez le numero de la ligne");
@@ -62,7 +61,8 @@ public class Partie {
                         this.grille.activerLigneDeCellules(num);
                         System.out.println(grille);
                         this.nbCoups+=1;
-                        System.out.print(nbCoups);
+                        int r=nbCoupmax-nbCoups;
+                        System.out.println("il vous reste "+r+" coups\n");
                     }
                     
                 else if (coup==2){
@@ -73,35 +73,44 @@ public class Partie {
                         this.grille.activerColonneDeCellules(num);
                         System.out.println(grille);
                         this.nbCoups+=1;
-                        System.out.print(nbCoups);
+                        int r=nbCoupmax-nbCoups;
+                        System.out.println("il vous reste "+r+" coups\n");
                      
                     }
                 else if (coup==3){
                         this.grille.activerDiagonaleMontante();
                         System.out.println(grille);
                         this.nbCoups+=1;
-                        System.out.print(nbCoups);
+                        int r=nbCoupmax-nbCoups;
+                        System.out.println("il vous reste "+r+" coups\n");
                     }  
                 else{
                         this.grille.activerDiagonaleDescendante();
                         System.out.println(grille);
                         this.nbCoups+=1;
-                        System.out.print(nbCoups);
+                        int r=nbCoupmax-nbCoups;
+                        System.out.println("il vous reste "+r+" coups\n");
                     }    
-
+        
         }while(nbCoups<nbCoupmax);
-            //break;   
-    //System.out.println("perdu");   
+        break;      
     }while (!this.grille.cellulesToutesEteintes());
-    return "bien joué";
-    //System.out.println("Toutes les cellules sont éteintes !");
-    //System.out.println("Nombre de coups nécessaires : " + nbCoups);
+    
+    if (this.grille.cellulesToutesEteintes()){
+        return "bien joué, toutes les cellules sont éteintes. il vous a fallu "+nbCoups+"coups";
+        }
+    else{
+        return "perdu";
+    }
     }    
     
+    /**
+     *permet de demander au joueur quel niveau de difficulté il choisit, il a le choix entre facile(1), intermédiaire(2) et difficile(3)
+     * @return la dimension de la grille
+     */
     public int NiveauDeJeu (){
         
         Scanner scanner = new Scanner(System.in); 
-        int dim=this.grille.nbLignes;
         int niveau=0;
         
         
@@ -112,21 +121,18 @@ public class Partie {
                 dim=4;
                 nbCoupmax=20;
                 System.out.println("vous avez max "+nbCoupmax+" coups pour gagner la partie");
-                //System.out.println(grille);
                 this.grille = new GrilleDeCellules(dim, dim);
                 break;
             case 2:
                 dim=7;
                 nbCoupmax=15;
                 System.out.println("vous avez max "+nbCoupmax+" coups pour gagner la partie");
-                //System.out.println(grille);
                 this.grille = new GrilleDeCellules(dim, dim);
                 break;
             case 3:
                 dim=10;
                 nbCoupmax=10;
                 System.out.println("vous avez max "+nbCoupmax+" coups pour gagner la partie");
-                //System.out.println(grille);
                 this.grille = new GrilleDeCellules(dim, dim);
                 break;
                 default :{

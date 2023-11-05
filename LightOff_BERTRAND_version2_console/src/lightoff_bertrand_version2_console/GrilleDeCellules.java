@@ -148,26 +148,25 @@ public class GrilleDeCellules {
     
     @Override
     public String toString(){ 
-        int dim=this.nbLignes;
-        String grille = "  |";
-        for (int i=0;i<dim;i++){
-            grille += " " + i + " |";}      
-            grille += "\n";
-            for (int i=0;i<(dim+1)*4;i++){
-                grille += "-";}
-                grille+="\n";
-            for (int i=0;i<dim;i++){
-                grille += i+" |";
-                for (int j=0;j<dim;j++){
-                    if(matriceCellules[i][j].getEtat()){
-                        grille += " X"+" |";}
-                    else{
-                        grille += " O"+" |";}}
-                grille += "\n";
-                    for (int j=0;j<(dim+1)*4;j++){
-                        grille += "-";}
-                        grille += "\n";}
-        return grille;
+        String grilleStr = "  |";
+        for (int i=0;i<nbColonnes;i++){
+            grilleStr += " " + i + " |";}      
+        grilleStr += "\n";
+        for (int i=0;i<(nbColonnes+1)*4;i++){
+            grilleStr += "-";}
+        grilleStr+="\n";
+        for (int i=0;i<nbLignes;i++){
+            grilleStr += i+" |";
+            for (int j=0;j<nbColonnes;j++){
+                if(matriceCellules[i][j].getEtat()){
+                    grilleStr += "\u001B[31m X \u001B[0m|";}
+                else{
+                    grilleStr += "\u001B[33m O \u001B[0m|";}}
+            grilleStr += "\n";
+            for (int j=0;j<(nbColonnes+1)*4;j++){
+                grilleStr += "-";}
+            grilleStr += "\n";}
+        return grilleStr;
     }
-   
+
 }
