@@ -13,10 +13,16 @@ import java.util.Scanner;
 public class Partie {
     GrilleDeCellules grille;
     int nbCoups;
-
-    public Partie(int nbCoups) {
-        this.grille=new GrilleDeCellules(7,7);
+    int dim;
+    int nbCoupmax=0;
+    //int dim=this.grille.nbColonnes;
+    
+    public Partie(int dimParDefaut) {
+        
+        this.dim=dimParDefaut;
+        this.grille=new GrilleDeCellules(dimParDefaut,dimParDefaut);
         this.nbCoups = 0;
+        
     }
     
     /**
@@ -34,8 +40,8 @@ public class Partie {
      * le joueur gagne quand toutes les cellules sont eteintes
      */
     public String lancerPartie(){
-    
-        Scanner scanner = new Scanner(System.in); // Créez le scanner en dehors de la boucle
+    //dim=this.NiveauDeJeu();
+    Scanner scanner = new Scanner(System.in); 
     int coup=0;
     int num=0;
     do{
@@ -46,10 +52,9 @@ public class Partie {
         do{
         coup = scanner.nextInt();
         }while (coup<1 || coup>4);
-            switch (coup) {
-                
-                case 1:
-                    {
+            
+                if(coup==1){
+                    
                         System.out.println("choisissez le numero de la ligne");
                         do{
                             num=scanner.nextInt();
@@ -57,10 +62,10 @@ public class Partie {
                         this.grille.activerLigneDeCellules(num);
                         System.out.println(grille);
                         this.nbCoups+=1;
-                        
+                        System.out.print(nbCoups);
                     }
-                case 2:
-                    {
+                    
+                else if (coup==2){
                         System.out.println("choisissez le numero de la colonne");
                         do{
                             num=scanner.nextInt();
@@ -68,36 +73,70 @@ public class Partie {
                         this.grille.activerColonneDeCellules(num);
                         System.out.println(grille);
                         this.nbCoups+=1;
+                        System.out.print(nbCoups);
                      
                     }
-                case 3:
-                    this.grille.activerDiagonaleMontante();
-                    //System.out.println(grille);
-                    this.nbCoups+=1;
-                    
-                case 4:
-                    this.grille.activerDiagonaleDescendante();
-                    //System.out.println(grille);
-                    this.nbCoups+=1;
-                    
-                default:
-                    break;
-            }
-   
-        }while(nbCoups<1);
-            break;   
-    //return "perdu";   
+                else if (coup==3){
+                        this.grille.activerDiagonaleMontante();
+                        System.out.println(grille);
+                        this.nbCoups+=1;
+                        System.out.print(nbCoups);
+                    }  
+                else{
+                        this.grille.activerDiagonaleDescendante();
+                        System.out.println(grille);
+                        this.nbCoups+=1;
+                        System.out.print(nbCoups);
+                    }    
+
+        }while(nbCoups<nbCoupmax);
+            //break;   
+    //System.out.println("perdu");   
     }while (!this.grille.cellulesToutesEteintes());
     return "bien joué";
-    }    
-    
-
-    // Une fois que toutes les cellules sont éteintes, le jeu se termine
-    //System.out.println(grille);
     //System.out.println("Toutes les cellules sont éteintes !");
     //System.out.println("Nombre de coups nécessaires : " + nbCoups);
+    }    
+    
+    public int NiveauDeJeu (){
+        
+        Scanner scanner = new Scanner(System.in); 
+        int dim=this.grille.nbLignes;
+        int niveau=0;
+        
+        
+        System.out.print("choisisser le niveau de difficulté entre 1, 2 ou 3: ");
+        niveau=scanner.nextInt();
+        switch (niveau) {
+            case 1:
+                dim=4;
+                nbCoupmax=20;
+                System.out.println("vous avez max "+nbCoupmax+" coups pour gagner la partie");
+                //System.out.println(grille);
+                this.grille = new GrilleDeCellules(dim, dim);
+                break;
+            case 2:
+                dim=7;
+                nbCoupmax=15;
+                System.out.println("vous avez max "+nbCoupmax+" coups pour gagner la partie");
+                //System.out.println(grille);
+                this.grille = new GrilleDeCellules(dim, dim);
+                break;
+            case 3:
+                dim=10;
+                nbCoupmax=10;
+                System.out.println("vous avez max "+nbCoupmax+" coups pour gagner la partie");
+                //System.out.println(grille);
+                this.grille = new GrilleDeCellules(dim, dim);
+                break;
+                default :{
+                
+                }
+        }
+        return dim;
+    }
 
-    //scanner.close(); // N'oubliez pas de fermer le scanner.
+    
         
 }
 

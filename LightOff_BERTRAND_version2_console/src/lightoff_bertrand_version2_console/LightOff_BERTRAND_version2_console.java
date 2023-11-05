@@ -26,8 +26,8 @@ public class LightOff_BERTRAND_version2_console {
         //test2.eteindreCellule();
         //test2.estEteint();
     
-     GrilleDeCellules grille1=new GrilleDeCellules(7,7);
-     Partie grille2=new Partie(5);
+     //GrilleDeCellules grille1=new GrilleDeCellules(7,7);
+     Partie grille2=new Partie(4);
      //grille1.activerLigneDeCellules(2);
      //grille1.activerColonneDeCellules(2);
      //grille1.activerDiagonaleDescendante();
@@ -36,10 +36,13 @@ public class LightOff_BERTRAND_version2_console {
      //grille1.MelangerMatriceAleatoirement(5);
      //grille1.cellulesToutesEteintes();
      //grille1.eteindreToutesLesCellules();
-     //grille2.initialiserPartie();
+     
+     
+     grille2.NiveauDeJeu();
+     grille2.initialiserPartie(3);
      grille2.lancerPartie();
      //System.out.println(grille1);
-     System.out.println(grille2);
+     //System.out.println(grille2);
     }
     
 }

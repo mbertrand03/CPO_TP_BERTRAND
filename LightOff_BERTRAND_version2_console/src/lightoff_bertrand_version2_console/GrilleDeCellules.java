@@ -148,22 +148,23 @@ public class GrilleDeCellules {
     
     @Override
     public String toString(){ 
+        int dim=this.nbLignes;
         String grille = "  |";
-        for (int i=0;i<nbColonnes;i++){
+        for (int i=0;i<dim;i++){
             grille += " " + i + " |";}      
             grille += "\n";
-            for (int i=0;i<(nbColonnes+1)*4;i++){
+            for (int i=0;i<(dim+1)*4;i++){
                 grille += "-";}
                 grille+="\n";
-            for (int i=0;i<nbLignes;i++){
+            for (int i=0;i<dim;i++){
                 grille += i+" |";
-                for (int j=0;j<nbColonnes;j++){
+                for (int j=0;j<dim;j++){
                     if(matriceCellules[i][j].getEtat()){
                         grille += " X"+" |";}
                     else{
                         grille += " O"+" |";}}
                 grille += "\n";
-                    for (int j=0;j<(nbColonnes+1)*4;j++){
+                    for (int j=0;j<(dim+1)*4;j++){
                         grille += "-";}
                         grille += "\n";}
         return grille;

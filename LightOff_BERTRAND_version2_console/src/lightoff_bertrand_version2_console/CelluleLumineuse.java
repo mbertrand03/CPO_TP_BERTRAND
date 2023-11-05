@@ -4,6 +4,8 @@
  */
 package lightoff_bertrand_version2_console;
 
+
+
 /**
  *permet de définir les transitions entre une cellule allumée et eteinte
  * @author marie
@@ -70,16 +72,19 @@ public class CelluleLumineuse {
         return false;
     }
     
+    
     @Override
     public String toString(){
         if(this.etat==true){
-                return "X"+"\u001B[43m \\u001B[0m";
+
+            return "X";
         }
         else if (this.etat==false){
-            return "O"+"\u001B[41m \\u001B[0m";
+            return "O";
         }
         return " ";
     }
+    
         
 }
 
