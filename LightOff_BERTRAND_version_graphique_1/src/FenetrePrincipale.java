@@ -23,14 +23,17 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     GrilleDeCellules grille;
     int nbCoups;
     int i;
+    int nbLignes;
+    int nbColonnes;
     public FenetrePrincipale() {
         
         initComponents();
-        int nbLignes = 10;
-        int nbColonnes = 10;
+        this.nbLignes = 10;
+        this.nbColonnes = 10;
         
         this.grille = new GrilleDeCellules(nbLignes, nbColonnes);
-         
+        
+        
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
@@ -40,8 +43,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                
             } 
         }
+        initialiserPartie();
         PanneauBoutonVerticaux.setLayout(new GridLayout(nbLignes, 1));
-        getContentPane().add(PanneauBoutonVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 1 * 36, nbLignes * 36));
+        getContentPane().add(PanneauBoutonVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 1 * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
         // création du panneau de boutons verticaux (pour les lignes)
@@ -53,6 +57,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 public void actionPerformed(ActionEvent e) {
                     grille.activerLigneDeCellules(j);
                    repaint();
+                   VerificationCellulesEteintes();
                 }
             };
             bouton_ligne.addActionListener(ecouteurClick);
@@ -61,7 +66,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
  }
 
         PanneauBoutonHorizontaux.setLayout(new GridLayout(1, nbColonnes));
-        getContentPane().add(PanneauBoutonHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, nbColonnes * 36, 1 * 36 ));
+        getContentPane().add(PanneauBoutonHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, nbColonnes * 40, 1 * 40 ));
         this.pack();
         this.revalidate();
         // création du panneau de boutons verticaux (pour les lignes)
@@ -71,8 +76,12 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 final int j = i;
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    grille.activerColonneDeCellules(j);
+                   grille.activerColonneDeCellules(j);
                    repaint();
+                   VerificationCellulesEteintes();
+                   //label.setText("bravo vous avez gagné");
+                    
+                  
                 }
             };
             bouton_colonne.addActionListener(ecouteurClick);
@@ -87,6 +96,24 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 grille.eteindreToutesLesCellules();
                 grille.MelangerMatriceAleatoirement(10);
             }
+    
+    public void VerificationCellulesEteintes(){
+        nbCoups++;
+        if (this.grille.cellulesToutesEteintes()==true){
+            for (int i=0; i<grille.getNbLignes();i++){
+                JButton btn=(JButton) PanneauBoutonVerticaux.getComponent(i);
+                btn.setVisible(false);
+            }
+            for (int j=0; j<grille.getNbColonnes();j++){
+                JButton btn=(JButton) PanneauBoutonHorizontaux.getComponent(j);
+                btn.setVisible(false);
+            }
+            DiagD.setVisible(false);
+            DiagM.setVisible(false);
+            label.setText("bravo vous avez gagné");
+        }
+        
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -101,6 +128,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauBoutonVerticaux = new javax.swing.JPanel();
         PanneauBoutonHorizontaux = new javax.swing.JPanel();
         DiagM = new javax.swing.JButton();
+        label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,14 +139,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauGrille.setLayout(PanneauGrilleLayout);
         PanneauGrilleLayout.setHorizontalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
         PanneauGrilleLayout.setVerticalGroup(
             PanneauGrilleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 360, 360));
+        getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 410, 400));
 
         DiagD.setBackground(new java.awt.Color(153, 51, 0));
         DiagD.setText("DiagD");
@@ -139,10 +167,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         );
         PanneauBoutonVerticauxLayout.setVerticalGroup(
             PanneauBoutonVerticauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauBoutonVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 60, 360));
+        getContentPane().add(PanneauBoutonVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 60, 400));
 
         PanneauBoutonHorizontaux.setBackground(new java.awt.Color(153, 51, 0));
 
@@ -150,14 +178,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauBoutonHorizontaux.setLayout(PanneauBoutonHorizontauxLayout);
         PanneauBoutonHorizontauxLayout.setHorizontalGroup(
             PanneauBoutonHorizontauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
+            .addGap(0, 410, Short.MAX_VALUE)
         );
         PanneauBoutonHorizontauxLayout.setVerticalGroup(
             PanneauBoutonHorizontauxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 50, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanneauBoutonHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 360, 50));
+        getContentPane().add(PanneauBoutonHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 410, 50));
 
         DiagM.setBackground(new java.awt.Color(153, 51, 0));
         DiagM.setText("diagM");
@@ -166,7 +194,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 DiagMActionPerformed(evt);
             }
         });
-        getContentPane().add(DiagM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 60, 50));
+        getContentPane().add(DiagM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 60, 50));
+
+        label.setText("jLabel1");
+        getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,12 +206,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.grille.activerDiagonaleDescendante();
         repaint();
+        this.VerificationCellulesEteintes();
     }//GEN-LAST:event_DiagDActionPerformed
 
     private void DiagMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiagMActionPerformed
         // TODO add your handling code here:
         this.grille.activerDiagonaleMontante();
         repaint();
+        this.VerificationCellulesEteintes();
     }//GEN-LAST:event_DiagMActionPerformed
 
     /**
@@ -216,6 +249,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 new FenetrePrincipale().setVisible(true);
             }
         });
+        
+        //grille.initialiserPartie();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -224,5 +259,6 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauBoutonHorizontaux;
     private javax.swing.JPanel PanneauBoutonVerticaux;
     private javax.swing.JPanel PanneauGrille;
+    private javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
 }

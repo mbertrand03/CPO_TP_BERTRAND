@@ -15,6 +15,14 @@ public class GrilleDeCellules {
     int nbLignes;
     int nbColonnes;
 
+    public int getNbLignes() {
+        return nbLignes;
+    }
+
+    public int getNbColonnes() {
+        return nbColonnes;
+    }
+
     public GrilleDeCellules(int nbLignes, int nbColonnes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
