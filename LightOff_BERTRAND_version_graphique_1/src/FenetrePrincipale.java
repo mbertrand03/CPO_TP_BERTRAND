@@ -92,7 +92,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
  
     }
-    public void initialiserPartie() {
+    public void initialiserPartie() { 
                 grille.eteindreToutesLesCellules();
                 grille.MelangerMatriceAleatoirement(10);
             }
