@@ -1,4 +1,6 @@
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,13 +30,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     public FenetrePrincipale() {
         
         initComponents();
-        this.nbLignes = 10;
-        this.nbColonnes = 10;
+        this.nbLignes = 3;
+        this.nbColonnes = 3;
         
         this.grille = new GrilleDeCellules(nbLignes, nbColonnes);
         
         
         PanneauGrille.setLayout(new GridLayout(nbLignes, nbColonnes));
+        this.initialiserPartie();
+        //getContentPane().add(PanneauGrille, BorderLayout.CENTER);
         for (int i=0; i < nbLignes; i++) {
             for (int j=0; j < nbColonnes; j++ ) {
                 //JButton bouton_cellule = new JButton(); // création d'un bouton
@@ -43,8 +47,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                
             } 
         }
-        initialiserPartie();
+        
         PanneauBoutonVerticaux.setLayout(new GridLayout(nbLignes, 1));
+        
         getContentPane().add(PanneauBoutonVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 1 * 40, nbLignes * 40));
         this.pack();
         this.revalidate();
@@ -55,7 +60,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 final int j = i;
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    grille.activerLigneDeCellules(j);
+                   grille.activerLigneDeCellules(j);
                    repaint();
                    VerificationCellulesEteintes();
                 }
@@ -79,11 +84,15 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                    grille.activerColonneDeCellules(j);
                    repaint();
                    VerificationCellulesEteintes();
+                   //if (this.grille.c==true){
+                   //    
+                   //}
                    //label.setText("bravo vous avez gagné");
-                    
-                  
+
                 }
+                
             };
+            
             bouton_colonne.addActionListener(ecouteurClick);
             PanneauBoutonHorizontaux.add(bouton_colonne);
 
@@ -103,11 +112,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
             for (int i=0; i<grille.getNbLignes();i++){
                 JButton btn=(JButton) PanneauBoutonVerticaux.getComponent(i);
                 btn.setVisible(false);
+                
             }
             for (int j=0; j<grille.getNbColonnes();j++){
                 JButton btn=(JButton) PanneauBoutonHorizontaux.getComponent(j);
                 btn.setVisible(false);
             }
+            
             DiagD.setVisible(false);
             DiagM.setVisible(false);
             label.setText("bravo vous avez gagné");
@@ -129,6 +140,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         PanneauBoutonHorizontaux = new javax.swing.JPanel();
         DiagM = new javax.swing.JButton();
         label = new javax.swing.JLabel();
+        Niveau_facil = new javax.swing.JButton();
+        Niveau_inter = new javax.swing.JButton();
+        Niveau_diff = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,6 +213,30 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         label.setText("jLabel1");
         getContentPane().add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, -1, -1));
 
+        Niveau_facil.setText("Niveau facil");
+        Niveau_facil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Niveau_facilActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Niveau_facil, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 110, 20));
+
+        Niveau_inter.setText("Niveau Intermediaire");
+        Niveau_inter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Niveau_interActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Niveau_inter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, -1, -1));
+
+        Niveau_diff.setText("Niveau difficil");
+        Niveau_diff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Niveau_diffActionPerformed(evt);
+            }
+        });
+        getContentPane().add(Niveau_diff, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -215,6 +253,22 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         repaint();
         this.VerificationCellulesEteintes();
     }//GEN-LAST:event_DiagMActionPerformed
+
+    private void Niveau_facilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Niveau_facilActionPerformed
+        // TODO add your handling code here:
+        //NiveauDeJeu(1);
+    }//GEN-LAST:event_Niveau_facilActionPerformed
+
+    private void Niveau_interActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Niveau_interActionPerformed
+        // TODO add your handling code here:
+        //this.grille.NiveauDeJeu(2);
+        
+    }//GEN-LAST:event_Niveau_interActionPerformed
+
+    private void Niveau_diffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Niveau_diffActionPerformed
+        // TODO add your handling code here:
+        //NiveauDeJeu(3);
+    }//GEN-LAST:event_Niveau_diffActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,6 +310,9 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DiagD;
     private javax.swing.JButton DiagM;
+    private javax.swing.JButton Niveau_diff;
+    private javax.swing.JButton Niveau_facil;
+    private javax.swing.JButton Niveau_inter;
     private javax.swing.JPanel PanneauBoutonHorizontaux;
     private javax.swing.JPanel PanneauBoutonVerticaux;
     private javax.swing.JPanel PanneauGrille;
