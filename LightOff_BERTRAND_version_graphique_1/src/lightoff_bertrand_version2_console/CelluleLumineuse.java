@@ -53,12 +53,7 @@ public class CelluleLumineuse {
      * @return true si la cellule est bien eteint et inversement
      */
     public boolean estEteint(){
-        if (etat==false){
-            return true;
-            
-        }
-        return false;
-        
+        return !etat;
     }
     
     /**
@@ -66,23 +61,18 @@ public class CelluleLumineuse {
      * @return true si elle est allumée et inversement
      */
     public boolean getEtat(){
-        if (etat==true){
-            return true;
-        }
-        return false;
+        return etat;
     }
     
     
     @Override
     public String toString(){
-        StringBuilder sb = new StringBuilder();
                 if(this.etat==true){
                     return "X";
                 }
-                else if (this.etat==false){
+                else {
                     return "O";
                 }
-            return " ";
         } 
 }
     
