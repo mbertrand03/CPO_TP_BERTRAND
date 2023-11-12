@@ -1,9 +1,12 @@
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import lightoff_bertrand_version2_console.GrilleDeCellules;
 
@@ -26,13 +29,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     int nbLignes;
     int nbColonnes;
     int nbCoupsMax;
-
+    
     public FenetrePrincipale() {
 
         initComponents();
         afficherGrille(false);
         lbl_finDePartie.setVisible(false);
-
+        lbl_bienvenue.setVisible(true);
+        lbl_choix.setText("Quelle difficulté choisissez-vous?");
+        lbl_choix.setVisible(true);
+         
+         
+        
+        
     }
 
     public void afficherGrille(boolean etat) {
@@ -45,7 +54,10 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     }
 
     public void genererGrille(int difficulte) {
-
+        
+        
+        lbl_bienvenue.setVisible(false);
+        lbl_choix.setVisible(false);
         Niveau_facil.setVisible(false);
         Niveau_inter.setVisible(false);
         Niveau_diff.setVisible(false);
@@ -55,15 +67,18 @@ public class FenetrePrincipale extends javax.swing.JFrame {
                 this.nbLignes = 4;
                 this.nbColonnes = 4;
                 nbCoupsMax = 50;
+                break;
             case 2:
                 this.nbLignes = 7;
                 this.nbColonnes = 7;
                 nbCoupsMax = 20;
+                break;
 
             default:
                 this.nbLignes = 10;
                 this.nbColonnes = 10;
                 nbCoupsMax = 15;
+                break;
 
         }
 
@@ -151,14 +166,19 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         int nbCoupsRestants = nbCoupsMax - nbCoups;
         lbl_nbCoupsRestants.setText("Coups restants : " + nbCoupsRestants);
 
+ 
         if (this.grille.cellulesToutesEteintes() == true) {
 
             afficherGrille(false);
-            lbl_finDePartie.setText("bravo vous avez gagné !");
+            lbl_finDePartie.setText("BRAVOO vous avez gagné !");
+            lbl_finDePartie.setFont(new Font("Arial", Font.BOLD, 14));
+            lbl_finDePartie.setForeground(Color.BLUE);
             lbl_finDePartie.setVisible(true);
         } else if (nbCoups == nbCoupsMax) {
             afficherGrille(false);
-            lbl_finDePartie.setText("Vous avez perdu");
+            lbl_finDePartie.setText("Vous avez perdu! essayez encore!!!");
+            lbl_finDePartie.setFont(new Font("Arial", Font.BOLD, 14));
+            lbl_finDePartie.setForeground(Color.RED);
             lbl_finDePartie.setVisible(true);
         }
 
@@ -183,11 +203,13 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         Niveau_inter = new javax.swing.JButton();
         Niveau_diff = new javax.swing.JButton();
         lbl_finDePartie = new javax.swing.JLabel();
+        lbl_bienvenue = new javax.swing.JLabel();
+        lbl_choix = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanneauGrille.setBackground(new java.awt.Color(153, 51, 0));
+        PanneauGrille.setBackground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout PanneauGrilleLayout = new javax.swing.GroupLayout(PanneauGrille);
         PanneauGrille.setLayout(PanneauGrilleLayout);
@@ -202,7 +224,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauGrille, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 410, 400));
 
-        DiagD.setBackground(new java.awt.Color(153, 51, 0));
+        DiagD.setBackground(new java.awt.Color(153, 153, 255));
         DiagD.setText(" ↘");
         DiagD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +233,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(DiagD, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 60, 50));
 
-        PanneauBoutonVerticaux.setBackground(new java.awt.Color(153, 51, 0));
+        PanneauBoutonVerticaux.setBackground(new java.awt.Color(204, 204, 255));
 
         javax.swing.GroupLayout PanneauBoutonVerticauxLayout = new javax.swing.GroupLayout(PanneauBoutonVerticaux);
         PanneauBoutonVerticaux.setLayout(PanneauBoutonVerticauxLayout);
@@ -226,7 +248,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonVerticaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 60, 400));
 
-        PanneauBoutonHorizontaux.setBackground(new java.awt.Color(153, 51, 0));
+        PanneauBoutonHorizontaux.setBackground(new java.awt.Color(204, 204, 255));
 
         javax.swing.GroupLayout PanneauBoutonHorizontauxLayout = new javax.swing.GroupLayout(PanneauBoutonHorizontaux);
         PanneauBoutonHorizontaux.setLayout(PanneauBoutonHorizontauxLayout);
@@ -241,7 +263,7 @@ public class FenetrePrincipale extends javax.swing.JFrame {
 
         getContentPane().add(PanneauBoutonHorizontaux, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 410, 50));
 
-        DiagM.setBackground(new java.awt.Color(153, 51, 0));
+        DiagM.setBackground(new java.awt.Color(153, 153, 255));
         DiagM.setText(" ↗");
         DiagM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -250,35 +272,49 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         });
         getContentPane().add(DiagM, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 60, 50));
 
+        lbl_nbCoupsRestants.setBackground(new java.awt.Color(255, 255, 204));
         lbl_nbCoupsRestants.setText("nombre de coups restants");
-        getContentPane().add(lbl_nbCoupsRestants, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 160, 70));
+        getContentPane().add(lbl_nbCoupsRestants, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 160, 40));
 
-        Niveau_facil.setText("Niveau facil");
+        Niveau_facil.setBackground(new java.awt.Color(51, 204, 0));
+        Niveau_facil.setForeground(new java.awt.Color(255, 255, 255));
+        Niveau_facil.setText("Niveau facile");
         Niveau_facil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Niveau_facilActionPerformed(evt);
             }
         });
-        getContentPane().add(Niveau_facil, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 550, 110, 20));
+        getContentPane().add(Niveau_facil, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 110, 30));
 
+        Niveau_inter.setBackground(new java.awt.Color(255, 102, 0));
+        Niveau_inter.setForeground(new java.awt.Color(255, 255, 255));
         Niveau_inter.setText("Niveau Intermediaire");
         Niveau_inter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Niveau_interActionPerformed(evt);
             }
         });
-        getContentPane().add(Niveau_inter, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 550, -1, -1));
+        getContentPane().add(Niveau_inter, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, -1, 30));
 
-        Niveau_diff.setText("Niveau difficil");
+        Niveau_diff.setBackground(new java.awt.Color(255, 0, 0));
+        Niveau_diff.setForeground(new java.awt.Color(255, 255, 255));
+        Niveau_diff.setText("Niveau difficile");
         Niveau_diff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Niveau_diffActionPerformed(evt);
             }
         });
-        getContentPane().add(Niveau_diff, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, -1, -1));
+        getContentPane().add(Niveau_diff, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 290, -1, 30));
 
+        lbl_finDePartie.setBackground(new java.awt.Color(255, 153, 153));
         lbl_finDePartie.setText("message Fin de partie");
-        getContentPane().add(lbl_finDePartie, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 240, 150, 90));
+        getContentPane().add(lbl_finDePartie, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 210, 40));
+
+        lbl_bienvenue.setText("Bienvenue dans Light Off");
+        getContentPane().add(lbl_bienvenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, -1, -1));
+
+        lbl_choix.setText("Quelle difficulté choisissez-vous?");
+        getContentPane().add(lbl_choix, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -287,14 +323,14 @@ public class FenetrePrincipale extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.grille.activerDiagonaleDescendante();
         repaint();
-        //this.VerificationCellulesEteintes();
+        this.VerificationCellulesEteintes();
     }//GEN-LAST:event_DiagDActionPerformed
 
     private void DiagMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DiagMActionPerformed
         // TODO add your handling code here:
         this.grille.activerDiagonaleMontante();
         repaint();
-        //this.VerificationCellulesEteintes();
+        this.VerificationCellulesEteintes();
     }//GEN-LAST:event_DiagMActionPerformed
 
     private void Niveau_facilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Niveau_facilActionPerformed
@@ -355,6 +391,8 @@ public class FenetrePrincipale extends javax.swing.JFrame {
     private javax.swing.JPanel PanneauBoutonHorizontaux;
     private javax.swing.JPanel PanneauBoutonVerticaux;
     private javax.swing.JPanel PanneauGrille;
+    private javax.swing.JLabel lbl_bienvenue;
+    private javax.swing.JLabel lbl_choix;
     private javax.swing.JLabel lbl_finDePartie;
     private javax.swing.JLabel lbl_nbCoupsRestants;
     // End of variables declaration//GEN-END:variables
